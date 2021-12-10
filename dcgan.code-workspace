@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "DCGAN Train",
+				"type": "python",
+				"request": "launch",
+				"program": "dcgan_mnist.py",
+				"console": "integratedTerminal",
+				"args": ["-o", "output"]
+			}
+		]
+	}
+}
