@@ -14,7 +14,12 @@
 				"request": "launch",
 				"program": "dcgan_mnist.py",
 				"console": "integratedTerminal",
-				"args": ["-o", "output"]
+				"args": [
+					"-o",
+					"output",
+					"-b",
+					"128"
+				]
 			}
 		]
 	}

@@ -7,7 +7,6 @@ from model.dcgan import Generator
 from model.dcgan import Discriminator
 from torchvision.datasets import MNIST
 from torch.utils.data import DataLoader
-from torchvision.transforms import ToTensor
 from torchvision import transforms
 from sklearn.utils import shuffle
 from imutils import build_montages
@@ -55,7 +54,7 @@ DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 # define data transforms
 dataTransforms = transforms.Compose(
-    [transforms.ToTensor(), transforms.Normalize((0.5), (0.5))]
+    [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))]
 )
 
 # load the MNIST dataset and stack the training and testing data
@@ -66,7 +65,7 @@ testData = MNIST(root="data", train=False, download=True, transform=dataTransfor
 data = torch.utils.data.ConcatDataset((trainData, testData))
 
 # initialize our dataloader
-dataloader = DataLoader(data, shuffle=True, batch_size=BATCH_SIZE)
+dataloader = DataLoader(data, shuffle=True, batch_size=BATCH_SIZE, num_workers=6)
 
 # calculate steps per epoch
 stepsPerEpoch = len(dataloader.dataset) // BATCH_SIZE
